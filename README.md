@@ -1,8 +1,8 @@
 # Shotgun Keyboard
 
-**Jedna tipka. Jedan shotgun pucanj.** Preuzmi Windows dodatak i tipkaj u Wordu, WhatsAppu, ChatGPT-u ili drugim aplikacijama. Dodatak radi u pozadini, bez zasebnog prozora za tipkanje. Dostupni su i Chrome/Edge ekstenzija te Android tipkovnica. Tri originalna lokalna efekta: Pump action, Double barrel i Tactical. Brzi pritisci preklapaju zvukove; prethodni pucanj se ne prekida.
+**Jedna tipka. Jedan shotgun pucanj.** Dostupni su Chrome/Edge ekstenzija za web-stranice i razvojna Android tipkovnica. Windows paket povučen je nakon što ga je antivirus blokirao pri lokalnoj provjeri; zvuk u desktop Wordu, WhatsAppu i Codexu trenutačno nije dostupan. Tri originalna lokalna efekta: Pump action, Double barrel i Tactical. Brzi pritisci preklapaju zvukove; prethodni pucanj se ne prekida.
 
-**[Stranica za preuzimanje](https://janabrestoveckimcc-crypto.github.io/shotgun/)** · **[Windows EXE](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/ShotgunKeyboard.exe)** · **[Ekstenzija ZIP](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/shotgun-keyboard-extension.zip)** · **[Android APK](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/shotgun-keyboard.apk)**
+**[Stranica za preuzimanje](https://janabrestoveckimcc-crypto.github.io/shotgun/)** · **[Ekstenzija ZIP](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/shotgun-keyboard-extension.zip)** · **[Android APK](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/shotgun-keyboard.apk)**
 
 ## Što radi gdje
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | Web/PWA | Ova web-aplikacija; fizička, zaslonska i mobilna tipkovnica | Suvremeni preglednik, prvi klik na Uključi zvuk |
 | Chrome/Edge ekstenzija | Obične HTTP/HTTPS web-stranice i njihovi okviri | Desktop Chromium 116+, ručna instalacija |
-| Windows | Tipkanje u uobičajenim Windows aplikacijama | Windows 10/11, .NET Framework 4.x, audio izlaz |
+| Windows | Preuzimanje povučeno nakon antivirusne blokade | Potrebna analiza i ponovna provjera |
 | Android | Polja za tekst u drugim aplikacijama dok je Shotgun odabrana tipkovnica | Android 8+, ručna instalacija APK-a |
 | iPhone/iPad | Web-aplikacija, može se dodati na početni zaslon | Safari, aktivna stranica |
 
@@ -39,13 +39,7 @@ Ekstenzija po zadanim postavkama ne svira dok držiš tipku; ponavljanje se mož
 
 ### Windows
 
-1. Preuzmi **ShotgunKeyboard.exe** i spremi ga u trajnu mapu. Svi zvukovi su ugrađeni u jednu datoteku; ZIP je također dostupan uz iste upute.
-2. Dvoklikni **ShotgunKeyboard.exe** i nastavi tipkati u svojim aplikacijama. Prvi put je zvuk uključen na 35%. Nije potreban Node.js ni administrator. Dodatak radi u pozadini; postavke otvori desnim klikom na ikonu u Windows programskoj traci, možda pod strelicom ∧.
-3. **Ctrl + Alt + M** uključuje ili utišava zvuk u bilo kojoj aplikaciji koja propušta globalne događaje tipkovnice.
-4. Zatvaranje prozora ostavlja ikonu uz sat. Desni klik → **Izlaz** potpuno zaustavlja aplikaciju.
-5. Za uklanjanje prvo u postavkama isključi **Pokreni pri prijavi u Windows** ako si to uključio. Odaberi Izlaz i izbriši EXE. Opcionalno ukloni postavke iz `%LOCALAPPDATA%\ShotgunKeyboard`.
-
-EXE nije digitalno potpisan. Postavke zvuka spremaju se lokalno. Automatsko pokretanje je isključeno dok ga sam ne uključiš u postavkama. UAC, zaključani zaslon i neke privilegirane aplikacije nisu podržani. Windows verzija ne može pouzdano razlikovati polja za lozinke pa tipkanje u njima također svira; po potrebi utišaj kraticom. Sintetički/injektirani događaji se ignoriraju.
+**Paket je povučen.** Pri lokalnom pokušaju pokretanja Windows je prijavio da datoteka sadrži virus ili potencijalno neželjen softver. Uzrok detekcije još nije utvrđen. EXE i Windows ZIP više se ne objavljuju kroz GitHub Pages. Ne zaobilazi antivirusnu blokadu. Izvorni kod ostaje dostupan za analizu; uspješan raniji CI build nije potvrda ispravnosti ili sigurnosti paketa.
 
 ### Android
 
@@ -79,9 +73,9 @@ npm run build
 npm start
 ```
 
-Otvori `http://127.0.0.1:4173`. Izgrađena ekstenzija je u `release/extension`. Lokalni build ne proizvodi APK i Windows ZIP automatski; svi paketi nastaju u CI objavi.
+Otvori `http://127.0.0.1:4173`. Izgrađena ekstenzija je u `release/extension`. Lokalni build ne proizvodi APK automatski; APK nastaje u CI objavi. Windows distribucija je pauzirana.
 
-Windows paket, iz PowerShella na Windowsu:
+Windows razvojna skripta (distribucija i pokretanje paketa pauzirani su dok se detekcija ne analizira):
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-windows.ps1
@@ -97,7 +91,7 @@ gradle -p android assembleDebug
 
 ## GitHub Pages i preuzimanja
 
-U **Settings → Pages → Source** odaberi **GitHub Actions**. Svaki push na `main` pokreće `.github/workflows/deploy.yml`: gradi Windows EXE i Android APK, provjerava JS, pakira ekstenziju i objavljuje web s tri preuzimanja. Status i eventualne greške vidljive su u kartici **Actions**.
+U **Settings → Pages → Source** odaberi **GitHub Actions**. Svaki push na `main` pokreće `.github/workflows/deploy.yml`: gradi Android APK, provjerava JS, pakira ekstenziju i objavljuje web. Windows EXE i ZIP ne distribuiraju se. Status i eventualne greške vidljive su u kartici **Actions**.
 
 Sve putanje su relativne pa web radi i ispod `/shotgun/`. Android APK izravno na webu je razvojni paket. Za javnu trgovinu potrebno je posebno izdanje s vlasnikovim trajnim potpisnim ključem.
 

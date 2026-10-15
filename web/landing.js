@@ -8,7 +8,7 @@ button.addEventListener('click', async () => {
   try {
     await audio.unlock(); audio.play({ sound:'pump', volume:.35 });
     document.body.classList.add('firing'); setTimeout(() => document.body.classList.remove('firing'),160);
-    status.textContent = 'To je to. Windows dodatak pušta ovaj zvuk na svaki pritisak tipke.';
+    status.textContent = 'Ovo je zvuk ekstenzije. Za tipkanje na web-stranicama prvo je instaliraj i uključi.';
   } catch(error) { status.textContent = `Zvuk nije pokrenut: ${error.message}`; }
   finally { busy = false; button.disabled = false; }
 });
