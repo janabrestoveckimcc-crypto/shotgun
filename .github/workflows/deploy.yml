@@ -10,6 +10,17 @@ concurrency:
   cancel-in-progress: true
 jobs:
   # Windows distribution is paused after antivirus blocked the generated binary.
+  windows-check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build
+      - name: Compile and check keyboard state and embedded sounds
+        run: powershell -NoProfile -File scripts/build-windows.ps1
+      # No Windows artifact is uploaded or published while local validation is blocked.
   android:
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +42,7 @@ jobs:
           name: android-package
           path: android/app/build/outputs/apk/debug/app-debug.apk
   build:
-    needs: [android]
+    needs: [android, windows-check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,30 +1,29 @@
-SHOTGUN KEYBOARD - WINDOWS 10 / 11
+SHOTGUN KEYBOARD - WINDOWS RAZVOJNA VERZIJA
 
-1. Spremi ShotgunKeyboard.exe u trajnu mapu i dvoklikni datoteku.
-2. Nastavi tipkati u Wordu, WhatsAppu, ChatGPT-u ili drugim aplikacijama.
-3. Svaki fizicki pritisak tipke daje jedan pucanj. Zvuk je prvi put na 35%.
-4. Ctrl + Alt + M ukljucuje ili utisava zvuk.
-5. Postavke: desni klik na malu ikonu u Windows programskoj traci,
-   mozda skrivenoj pod strelicom prema gore. Dvoklik otvara postavke.
-6. Za potpuno zaustavljanje: desni klik na ikonu > Izlaz.
+DISTRIBUCIJA JE PAUZIRANA.
+Lokalna antivirusna zastita blokira generirani EXE. Uzrok detekcije
+jos nije utvrdjen. Nemoj zaobilaziti blokadu ni iskljucivati zastitu.
+Izvorni kod je dostupan za pregled; ovo nije provjeren instalacijski paket.
 
-Svi zvukovi su ugradjeni u EXE. Nema posebnog prozora za tipkanje.
-Nisu potrebni instalacija, administrator ili Node.js.
-.NET Framework 4.x dolazi s Windowsom 10/11.
-Program nije digitalno potpisan pa Windows moze prikazati upozorenje.
-Izvor: github.com/janabrestoveckimcc-crypto/shotgun
+Razvojni kod koristi Windows Raw Input za fizicku tipkovnicu.
+Ne postavlja globalne hookove, ne mijenja ili zaustavlja tipke,
+ne zapisuje tekst i ne dodaje automatsko pokretanje s Windowsom.
+Postavke zvuka su u %LOCALAPPDATA%\ShotgunKeyboard\settings.ini.
+Brojac pucnjeva ostaje samo u memoriji za vrijeme pokretanja.
 
-Postavke zvuka spremaju se u %LOCALAPPDATA%\ShotgunKeyboard\settings.ini.
-Automatsko pokretanje s Windowsom je opcionalno (postavke).
-Za uklanjanje najprije iskljuci automatsko pokretanje ako si ga ukljucio,
-odaberi Izlaz, izbrisi EXE i po zelji mapu postavki.
+Planirano ponasanje nakon uspjesne provjere:
+- Prozor postavki je vidljiv pri pokretanju.
+- Zvuk ukljucen / utisan i brojac vidljivi su u postavkama.
+- Ctrl + Alt + M ukljucuje ili utisava zvuk.
+- Radi u pozadini skriva prozor; ikona omogucuje ponovno otvaranje.
+- Zaustavi i zatvori potpuno gasi aplikaciju.
+- Browser ekstenziju treba utisati da ne daje dodatni pucanj.
 
-Nema mreze, snimanja, logova ni slanja teksta.
-Pamte se samo trenutno pritisnute tipke radi ponavljanja i kratice.
-Polja za lozinke na Windowsu takodjer proizvode zvuk dok ga ne utisas.
-UAC, zakljucani zaslon i neke privilegirane aplikacije nisu podrzani.
-Koristi jednu ukljucenu verziju: Windows dodatak i web-ekstenzija
-istodobno mogu proizvesti dva pucnja za istu tipku.
+Zasticeni Windows zasloni i neke povisene aplikacije nisu podrzani.
+Lozinke takodjer proizvode zvuk dok je dodatak ukljucen.
+Fizicki unos u pozadini jos nije lokalno provjeren.
 
 Izvorni kod: windows/ShotgunKeyboard.cs
-Izrada: npm run build, zatim powershell -File scripts/build-windows.ps1
+--self-test: WAV datoteke, stanje tipki, ponavljanje i kratica
+--smoke-test: otvaranje audio izlaza i registracija Windows ulaza
+https://github.com/janabrestoveckimcc-crypto/shotgun

@@ -41,6 +41,8 @@ Ekstenzija po zadanim postavkama ne svira dok držiš tipku; ponavljanje se mož
 
 **Paket je povučen.** Pri lokalnom pokušaju pokretanja Windows je prijavio da datoteka sadrži virus ili potencijalno neželjen softver. Uzrok detekcije još nije utvrđen. EXE i Windows ZIP više se ne objavljuju kroz GitHub Pages. Ne zaobilazi antivirusnu blokadu. Izvorni kod ostaje dostupan za analizu; uspješan raniji CI build nije potvrda ispravnosti ili sigurnosti paketa.
 
+Razvojna implementacija sada koristi Windows Raw Input (`WM_INPUT`, `RIDEV_INPUTSINK`), bez globalnog keyboard hooka i bez upisa u automatsko pokretanje. Prikazuje postavke pri pokretanju, prekidač zvuka, brojač pucnjeva za trenutačnu sesiju i gumb za potpuno zatvaranje. Nova verzija kompilira se, ali lokalna antivirusna blokada ostaje; primanje fizičkih tipki i reprodukcija kroz druge aplikacije još nisu potvrđeni. CI provjerava kod i ugrađene zvukove, bez objave Windows datoteka.
+
 ### Android
 
 1. Preuzmi **shotgun-keyboard.apk** i otvori datoteku. Ako Android zatraži, dopusti instalaciju tom izvoru.
@@ -58,7 +60,7 @@ Jednostavan QWERTY raspored ima č, ć, ž, š i đ, simbole, Shift, brojčani r
 - Nema poslužitelja za aplikacijske podatke, računa, analitike, mikrofona ni telemetrije. GitHub Pages uobičajeno poslužuje statičke datoteke.
 - Upisani tekst web-igraonice ostaje u memoriji stranice i nestaje nakon osvježavanja; samo postavke zvuka koriste localStorage.
 - Ekstenzija šalje samo interni signal `{ target: 'background', type: 'shot' }`. Ne šalje tipku, tekst ni URL. `storage` služi postavkama, `offscreen` reprodukciji, a content scripts su potrebni za događaje na web-stranicama.
-- Windows pamti samo trenutno pritisnute virtualne tipke za detekciju držanja i kratice. Nema logiranja, datoteka s tekstom ni mrežnog koda.
+- Windows razvojni kod pamti samo trenutno pritisnute virtualne tipke po uređaju za detekciju držanja i kratice. Brojač pucnjeva ostaje u memoriji tijekom sesije. Nema logiranja tipki, datoteka s tekstom ni mrežnog koda.
 - Android IME predaje pritisnuto slovo aktivnom editoru. Ne čita okolni tekst, ne pohranjuje ga i nema `INTERNET` dozvolu. Androidovo opće upozorenje za tipkovnice primjenjuje se pri omogućavanju svakog IME-a.
 
 ## Lokalni razvoj
@@ -97,6 +99,6 @@ Sve putanje su relativne pa web radi i ispod `/shotgun/`. Android APK izravno na
 
 ## Provjera
 
-`npm test` provjerava jedan pucanj po događaju, deduplikaciju keydown/beforeinput, držanje tipke, mobilni IME, utišavanje, privatnost poruka ekstenzije i granice audio uzoraka. Windows build provjerava kompilaciju i strukturu svih WAV datoteka. Stvarne Android/iPhone uređaje i ponašanje svake vanjske aplikacije treba provjeriti na tim uređajima; uspješna kompilacija sama po sebi to ne potvrđuje.
+`npm test` provjerava jedan pucanj po događaju, deduplikaciju keydown/beforeinput, držanje tipke, mobilni IME, utišavanje, privatnost poruka ekstenzije i granice audio uzoraka. Windows `--self-test` provjerava strukturu svih WAV datoteka, držanje i otpuštanje tipke, kraticu za utišavanje, odvojeno stanje uređaja i veličinu Raw Input zaglavlja. `--smoke-test` provjerava otvaranje audio izlaza i registraciju ulaza, bez potvrde primanja fizičkih pritisaka. Stvarne Android/iPhone uređaje i ponašanje svake vanjske aplikacije treba provjeriti na tim uređajima; uspješna kompilacija sama po sebi to ne potvrđuje.
 
-Implementacija slijedi [Chrome offscreen API](https://developer.chrome.com/docs/extensions/reference/api/offscreen), [Android InputMethodService](https://developer.android.com/develop/ui/views/touch-and-input/creating-input-method), [Windows LowLevelKeyboardProc](https://learn.microsoft.com/en-us/windows/win32/winmsg/lowlevelkeyboardproc) i [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+Implementacija slijedi [Chrome offscreen API](https://developer.chrome.com/docs/extensions/reference/api/offscreen), [Android InputMethodService](https://developer.android.com/develop/ui/views/touch-and-input/creating-input-method), [Windows Raw Input](https://learn.microsoft.com/en-us/windows/win32/inputdev/about-raw-input) i [GitHub Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
