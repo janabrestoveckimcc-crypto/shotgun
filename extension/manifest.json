@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Shotgun Keyboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "homepage_url": "https://janabrestoveckimcc-crypto.github.io/shotgun/",
   "description": "Jedna tipka, jedan shotgun pucanj. Lokalni zvuk, bez snimanja teksta.",
   "minimum_chrome_version": "116",
   "permissions": ["storage", "offscreen"],

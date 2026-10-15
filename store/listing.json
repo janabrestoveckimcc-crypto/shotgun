@@ -1,0 +1,28 @@
+{
+  "name": "Shotgun Keyboard",
+  "version": "1.0.1",
+  "language": "Croatian",
+  "categorySuggestion": "Entertainment",
+  "price": "Free",
+  "summary": "Jedna tipka, jedan shotgun pucanj. Lokalni zvuk, bez snimanja teksta.",
+  "description": "Daj tipkanju novi zvuk. Shotgun Keyboard pušta kratak shotgun efekt na pritisak tipke dok koristiš web-stranice u Chromeu.\n\nKAKO KRENUTI\n1. Instaliraj ekstenziju i otvori je kroz ikonu ekstenzija.\n2. Klikni „Uključi zvuk”.\n3. Osvježi stranice koje su bile otvorene prije instalacije i nastavi tipkati.\n\nŠTO DOBIVAŠ\n• Tri originalna zvučna efekta: Pump action, Double barrel i Tactical.\n• Podešavanje glasnoće i brzo utišavanje.\n• Opcionalno ponavljanje zvuka dok držiš tipku.\n• Zasebne pucnjeve pri brzom tipkanju.\n• Postavke spremljene lokalno u pregledniku.\n\nRadi na običnim web-stranicama, primjerice u WhatsApp Webu i web-obrascima. Polja označena kao lozinka su utišana. Ekstenzija ne radi u adresnoj traci, na internim stranicama preglednika, Chrome Web Storeu ni u zasebnim desktop aplikacijama. Namijenjena je Chromeu 116 ili novijem na računalu. Sučelje je na hrvatskom jeziku.\n\nPRIVATNOST\nDogađaji tipkovnice obrađuju se lokalno samo za okidanje zvuka. Sadržaj polja ne čita se niti se tekst tipkanja sprema ili šalje. Nema analitike, oglašavanja, računa ni mikrofona. Svi zvukovi uključeni su u paket.\n\nProjekt nije povezan s proizvođačima spomenutih preglednika ili web-aplikacija.",
+  "homepage": "https://janabrestoveckimcc-crypto.github.io/shotgun/",
+  "support": "https://github.com/janabrestoveckimcc-crypto/shotgun/issues",
+  "privacyPolicy": "https://janabrestoveckimcc-crypto.github.io/shotgun/privacy.html",
+  "singlePurpose": "Play a locally bundled shotgun sound effect when the user presses a key on supported web pages, with optional volume, sound and repeat controls.",
+  "permissions": {
+    "storage": "Stores only the enabled switch, volume, selected sound and repeat preference in chrome.storage.local. No typed text or browsing history is stored or synced.",
+    "offscreen": "Creates an AUDIO_PLAYBACK offscreen document to play bundled WAV sounds through Web Audio after the popup is closed. The service worker cannot use Web Audio directly.",
+    "contentScriptMatches": "HTTP and HTTPS content scripts observe trusted keyboard/input events on the pages where the user types, including embedded frames. They check password field type, composition and repeat state. They send only a generic shot trigger to this extension, never key values, typed text, URLs or page content. Broad page coverage is essential to the user-selected keyboard sound feature."
+  },
+  "remoteCode": false,
+  "dataHandling": "Keyboard/input event metadata is processed transiently on the device. No user data is collected or transmitted to the developer or a third party by the extension. Local preferences only. Read the exact dashboard definitions before selecting privacy checkboxes; disclose local processing wherever requested.",
+  "reviewerInstructions": "No login or account required. Open the popup and click Uključi zvuk (enable sound). Click Isprobaj zvuk to preview. Open or refresh a normal HTTPS page with a text field and type: expect one sound per key. Toggle Utišaj zvuk to mute. Volume and sound selection update immediately. A held key repeats only if Ponavljaj dok držim tipku is selected. A password input should be silent. Refresh tabs opened before installation. Browser internal pages, the address bar and Chrome Web Store are unsupported. The extension intentionally starts muted.",
+  "assets": {
+    "icon": "icon-128.png",
+    "smallPromo": "promo-440x280.jpg",
+    "screenshot": "screenshot-1280x800.jpg"
+  },
+  "submissionStatus": "Prepared locally; not uploaded or submitted to Chrome Web Store.",
+  "accountInformation": "Must come from the publisher: Google account, developer registration, contact verification, legal/trader status and any required identity details. Do not infer these from repository names."
+}

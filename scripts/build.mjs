@@ -7,6 +7,7 @@ await mkdir(resolve(root, 'dist/downloads'), { recursive: true });
 await cp(resolve(root, 'web'), resolve(root, 'dist'), { recursive: true });
 await cp(resolve(root, 'shared'), resolve(root, 'dist/shared'), { recursive: true });
 await cp(resolve(root, 'assets'), resolve(root, 'dist/assets'), { recursive: true });
+await rm(resolve(root, 'release/extension'), { recursive: true, force: true });
 await mkdir(resolve(root, 'release/extension'), { recursive: true });
 await cp(resolve(root, 'extension'), resolve(root, 'release/extension'), { recursive: true });
 await cp(resolve(root, 'shared'), resolve(root, 'release/extension/shared'), { recursive: true });

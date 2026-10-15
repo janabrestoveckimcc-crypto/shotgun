@@ -1,0 +1,15 @@
+SHOTGUN KEYBOARD — Chrome Web Store submission package
+
+Status: prepared, NOT submitted to the store.
+
+1. Open https://chrome.google.com/webstore/devconsole using your publisher Google account.
+2. Complete developer registration if required. The account owner must supply real account/contact/trader details and approve any registration fee and agreement.
+3. Add new item and upload release/shotgun-keyboard-chrome-1.0.1.zip. The manifest must be at the ZIP root. Do not upload the store asset folder as the extension.
+4. Use store/listing.json for the listing, permissions, privacy and reviewer fields. Check the current dashboard definitions before making data-use certifications.
+5. Upload store/icon-128.png, store/promo-440x280.jpg and store/screenshot-1280x800.jpg. The screenshot presents the actual popup markup and styles, without browser branding; it is an interface preview, not a photograph of an installed Chrome session.
+6. Select free distribution, review the completed listing and submit for Google review. Publication is controlled by Google review and does not happen merely by uploading the ZIP.
+
+Policy URL: https://janabrestoveckimcc-crypto.github.io/shotgun/privacy.html
+Support: https://github.com/janabrestoveckimcc-crypto/shotgun/issues
+
+Chrome/Edge 116+ on desktop only. No claim of desktop-app or mobile-Chrome coverage.

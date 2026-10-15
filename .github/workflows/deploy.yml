@@ -60,6 +60,7 @@ jobs:
           cp release/android/app-debug.apk dist/downloads/shotgun-keyboard.apk
           cd release/extension
           zip -qr ../../dist/downloads/shotgun-keyboard-extension.zip .
+          cp ../../dist/downloads/shotgun-keyboard-extension.zip ../../dist/downloads/shotgun-keyboard-chrome-1.0.1.zip
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -40,11 +40,15 @@ function crc32(data) { let c = -1; for (const b of data) { c ^= b; for (let j = 
 function chunk(type, data) { const b = Buffer.alloc(12 + data.length); b.writeUInt32BE(data.length); b.write(type, 4); data.copy(b, 8); b.writeUInt32BE(crc32(b.subarray(4, -4)), b.length - 4); return b; }
 function icon(size) {
   const raw = Buffer.alloc((size * 4 + 1) * size);
+  // The store icon includes the required 16px transparent padding at 128px.
+  const padding = size === 128 ? 16 : 0;
+  const artwork = size - 2 * padding;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-    const dx = x / size - .5, dy = y / size - .5, r = Math.hypot(dx, dy);
+    const dx = (x - padding) / artwork - .5, dy = (y - padding) / artwork - .5, r = Math.hypot(dx, dy);
     const mark = (r > .23 && r < .27) || (Math.abs(dx) < .025 && Math.abs(dy) < .36) || (Math.abs(dy) < .025 && Math.abs(dx) < .36);
     const offset = y * (size * 4 + 1) + 1 + x * 4;
-    raw.set(mark ? [30, 32, 29, 255] : [245, 255, 96, 255], offset);
+    const outside = x < padding || y < padding || x >= size - padding || y >= size - padding;
+    raw.set(outside ? [0, 0, 0, 0] : mark ? [30, 32, 29, 255] : [245, 255, 96, 255], offset);
   }
   const header = Buffer.alloc(13); header.writeUInt32BE(size); header.writeUInt32BE(size, 4); header[8] = 8; header[9] = 6;
   return Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]), chunk('IHDR',header), chunk('IDAT',deflateSync(raw)), chunk('IEND',Buffer.alloc(0))]);

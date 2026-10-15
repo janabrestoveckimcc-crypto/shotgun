@@ -37,6 +37,8 @@ Zvuk se automatski utišava kad stranica ode u pozadinu. Mobilni preglednik izla
 
 Ekstenzija po zadanim postavkama ne svira dok držiš tipku; ponavljanje se može uključiti. HTML polja za lozinke su utišana. Interne stranice poput `chrome://`, trgovina ekstenzija i pojedine zaštićene stranice nisu podržane. Nije objavljena u Chrome Web Storeu. Za uklanjanje odaberi Remove na stranici ekstenzija.
 
+Paket za Chrome Web Store 1.0.1 pripremljen je kao [Chrome ZIP](https://janabrestoveckimcc-crypto.github.io/shotgun/downloads/shotgun-keyboard-chrome-1.0.1.zip). Mapa `store` sadrži opis, razloge za dozvole, upute recenzentima, ikonu i slike za objavu. `store/UPLOAD.txt` opisuje preostale korake. To je pripremljen paket, a ne potvrda objave ili Googleova odobrenja. [Politika privatnosti ekstenzije](https://janabrestoveckimcc-crypto.github.io/shotgun/privacy.html) dostupna je javno.
+
 ### Windows
 
 **Paket je povučen.** Pri lokalnom pokušaju pokretanja Windows je prijavio da datoteka sadrži virus ili potencijalno neželjen softver. Uzrok detekcije još nije utvrđen. EXE i Windows ZIP više se ne objavljuju kroz GitHub Pages. Ne zaobilazi antivirusnu blokadu. Izvorni kod ostaje dostupan za analizu; uspješan raniji CI build nije potvrda ispravnosti ili sigurnosti paketa.
