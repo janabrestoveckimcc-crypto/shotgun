@@ -12,6 +12,6 @@ await cp(resolve(root, 'extension'), resolve(root, 'release/extension'), { recur
 await cp(resolve(root, 'shared'), resolve(root, 'release/extension/shared'), { recursive: true });
 await cp(resolve(root, 'assets'), resolve(root, 'release/extension/assets'), { recursive: true });
 await mkdir(resolve(root, 'android/app/src/main/res/raw'), { recursive: true });
-for (const sound of ['pump', 'double', 'tactical']) await cp(resolve(root, `assets/audio/${sound}.wav`), resolve(root, `android/app/src/main/res/raw/${sound}.wav`));
+for (const sound of ['pump', 'double', 'tactical']) await cp(resolve(root, `assets/audio/${sound}.wav`), resolve(root, `android/app/src/main/res/raw/${sound === 'double' ? 'double_barrel' : sound}.wav`));
 await writeFile(resolve(root, 'dist/.nojekyll'), '');
 console.log('Built web/PWA, extension, and Android audio assets.');

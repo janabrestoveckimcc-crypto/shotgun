@@ -29,7 +29,7 @@ public final class ShotgunIME extends InputMethodService {
     super.onCreate(); prefs = getSharedPreferences("shotgun", MODE_PRIVATE);
     audio = new SoundPool.Builder().setMaxStreams(20).setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
     audio.setOnLoadCompleteListener((pool,id,status) -> { if (status == 0) ready.add(id); });
-    sounds[0] = audio.load(this,R.raw.pump,1); sounds[1] = audio.load(this,R.raw.double,1); sounds[2] = audio.load(this,R.raw.tactical,1);
+    sounds[0] = audio.load(this,R.raw.pump,1); sounds[1] = audio.load(this,R.raw.double_barrel,1); sounds[2] = audio.load(this,R.raw.tactical,1);
   }
   @Override public boolean onEvaluateFullscreenMode() { return false; }
   @Override public View onCreateInputView() {
