@@ -1,0 +1,30 @@
+SHOTGUN KEYBOARD - WINDOWS 10 / 11
+
+1. Spremi ShotgunKeyboard.exe u trajnu mapu i dvoklikni datoteku.
+2. Nastavi tipkati u Wordu, WhatsAppu, ChatGPT-u ili drugim aplikacijama.
+3. Svaki fizicki pritisak tipke daje jedan pucanj. Zvuk je prvi put na 35%.
+4. Ctrl + Alt + M ukljucuje ili utisava zvuk.
+5. Postavke: desni klik na malu ikonu u Windows programskoj traci,
+   mozda skrivenoj pod strelicom prema gore. Dvoklik otvara postavke.
+6. Za potpuno zaustavljanje: desni klik na ikonu > Izlaz.
+
+Svi zvukovi su ugradjeni u EXE. Nema posebnog prozora za tipkanje.
+Nisu potrebni instalacija, administrator ili Node.js.
+.NET Framework 4.x dolazi s Windowsom 10/11.
+Program nije digitalno potpisan pa Windows moze prikazati upozorenje.
+Izvor: github.com/janabrestoveckimcc-crypto/shotgun
+
+Postavke zvuka spremaju se u %LOCALAPPDATA%\ShotgunKeyboard\settings.ini.
+Automatsko pokretanje s Windowsom je opcionalno (postavke).
+Za uklanjanje najprije iskljuci automatsko pokretanje ako si ga ukljucio,
+odaberi Izlaz, izbrisi EXE i po zelji mapu postavki.
+
+Nema mreze, snimanja, logova ni slanja teksta.
+Pamte se samo trenutno pritisnute tipke radi ponavljanja i kratice.
+Polja za lozinke na Windowsu takodjer proizvode zvuk dok ga ne utisas.
+UAC, zakljucani zaslon i neke privilegirane aplikacije nisu podrzani.
+Koristi jednu ukljucenu verziju: Windows dodatak i web-ekstenzija
+istodobno mogu proizvesti dva pucnja za istu tipku.
+
+Izvorni kod: windows/ShotgunKeyboard.cs
+Izrada: npm run build, zatim powershell -File scripts/build-windows.ps1

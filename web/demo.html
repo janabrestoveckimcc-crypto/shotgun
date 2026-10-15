@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5ff60"><meta name="description" content="Svaka tipka. Novi prasak. Pretvori tipkanje u shotgun zvuk — na webu, Windowsu i Androidu.">
+  <title>Shotgun Keyboard — Make some noise.</title>
+  <link rel="icon" href="./assets/icons/icon-48.png"><link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="Shotgun Keyboard početna"><span class="crosshair" aria-hidden="true">⊕</span> SHOTGUN<span class="brand-light">KEYBOARD</span></a><a href="#install" class="top-link">Ponesi zvuk sa sobom <span>↗</span></a></header>
+  <main>
+    <section class="intro"><div><div class="eyebrow"><span></span> THE LOUDEST WAY TO TYPE</div><h1>Svaka tipka.<br>Novi <span>prasak.</span><svg viewBox="0 0 72 72" aria-hidden="true"><path d="M36 0 42 24 62 10 48 30 72 36 48 42 62 62 42 48 36 72 30 48 10 62 24 42 0 36 24 30 10 10 30 24Z"/></svg></h1></div><p>Tvoja tipkovnica ima novi zvuk.<br>Uključi, pojačaj po svom i ispucaj<br>nekoliko redaka.</p></section>
+    <section class="workstation" aria-label="Shotgun Keyboard zvučna igraonica">
+      <div class="playground">
+        <div class="panel-top"><span><i id="status-dot"></i> <span id="status">ZVUK ISKLJUČEN</span></span><span class="mono">PLAYGROUND / 01</span></div>
+        <div class="typing-wrap"><label for="typing" class="sr-only">Isprobaj tipkovnicu</label><textarea id="typing" placeholder="Ovdje počinje buka…" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="typing-hint"></textarea><div class="typing-bottom"><span id="typing-hint">Uključi zvuk pa počni tipkati.</span><button id="clear" class="text-button" type="button">Očisti ↺</button></div></div>
+        <div class="keyboard" id="keyboard" aria-label="Zaslonska tipkovnica"></div>
+        <div class="meter-bar"><span class="meter-icon" aria-hidden="true">▂ ▅ ▃ ▇ ▄ ▂ ▆ ▃</span><span id="feedback">TIŠINA PRIJE PRASKA.</span><span class="privacy">○ Bez spremanja teksta</span></div>
+      </div>
+      <aside class="controls" aria-label="Postavke zvuka">
+        <div class="control-heading"><span class="eyebrow">KONTROLNA PLOČA</span><span aria-hidden="true">↗</span></div>
+        <button class="power" id="power" type="button" aria-pressed="false"><span class="power-icon">⏻</span><span id="power-label">Uključi zvuk</span><span class="power-arrow">↗</span></button>
+        <p id="audio-message" class="small" role="status">Jedan klik i spreman si za paljbu.</p>
+        <div class="volume-header"><label for="volume">Glasnoća</label><output id="volume-value" for="volume">35%</output></div><input id="volume" type="range" min="0" max="100" value="35">
+        <fieldset class="sound-picker"><legend>Odaberi svoj zvuk</legend><label class="sound-option"><input type="radio" name="sound" value="pump" checked><span class="sound-number">01</span><span><strong>Pump action</strong><small>Klasični prasak + repetiranje</small></span><span class="radio-mark"></span></label><label class="sound-option"><input type="radio" name="sound" value="double"><span class="sound-number">02</span><span><strong>Double barrel</strong><small>Dublje. Teže. Glasnije.</small></span><span class="radio-mark"></span></label><label class="sound-option"><input type="radio" name="sound" value="tactical"><span class="sound-number">03</span><span><strong>Tactical</strong><small>Kratko i oštro</small></span><span class="radio-mark"></span></label></fieldset>
+        <button id="test" class="test-button" type="button">Isprobaj zvuk <span aria-hidden="true">↗</span></button>
+        <label class="repeat-control"><span>Ponavljaj dok držim tipku</span><input id="repeat" type="checkbox" role="switch"></label>
+        <div class="stats"><div><strong id="shots">000</strong><span>ISPALJENIH ZVUKOVA</span></div><div><strong id="speed">0.0</strong><span>TIPKI / SEK</span></div></div>
+      </aside>
+    </section>
+    <div class="under-panel"><span>⌨ Fizička ili zaslonska tipkovnica. Tvoj izbor.</span><span>ESC za utišavanje <kbd>esc</kbd></span></div>
+    <section id="install" class="install"><div class="section-heading"><div><span class="eyebrow">BEYOND THE PLAYGROUND</span><h2>Buka, kamo god tipkaš.</h2></div><p>Odaberi gdje želiš koristiti Shotgun Keyboard.</p></div>
+      <div class="install-grid">
+        <article><span class="platform-icon">▧</span><span class="platform-tag">CHROME / EDGE</span><h3>U pregledniku.</h3><p>Zvuk na web-stranicama, od maila do bilježaka. Pališ i gasiš u ekstenziji.</p><a class="download" href="./downloads/shotgun-keyboard-extension.zip" download>Preuzmi ekstenziju <span>↓</span></a><details><summary>Kako instalirati</summary><ol><li>Raspakiraj ZIP.</li><li>Otvori <code>chrome://extensions</code> ili <code>edge://extensions</code>.</li><li>Uključi Developer mode → Load unpacked → odaberi raspakiranu mapu.</li><li>Osvježi otvorene stranice, otvori ekstenziju i uključi zvuk.</li></ol><p>Ne radi na internim stranicama preglednika i trgovini ekstenzija. Polja za lozinke preskače.</p></details></article>
+        <article><span class="platform-icon">⊞</span><span class="platform-tag">WINDOWS 10 / 11</span><h3>Po cijelom desktopu.</h3><p>Mala aplikacija uz sat. Zvuk pri tipkanju u drugim Windows aplikacijama.</p><a class="download" href="./downloads/shotgun-keyboard-windows.zip" download>Preuzmi za Windows <span>↓</span></a><details><summary>Kako instalirati</summary><ol><li>Raspakiraj ZIP u svoju mapu.</li><li>Pokreni <code>ShotgunKeyboard.exe</code>.</li><li>Odaberi zvuk i uključi ga. Ctrl + Alt + M utišava ili uključuje.</li></ol><p>Zaštićeni Windows zasloni nisu podržani. Za uklanjanje zatvori aplikaciju iz izbornika uz sat i izbriši mapu. Aplikacija nije digitalno potpisana.</p></details></article>
+        <article><span class="platform-icon">▯</span><span class="platform-tag">ANDROID / iPHONE</span><h3>Prasak u džepu.</h3><p>Android dobiva svoju tipkovnicu. Na iPhoneu koristi ovu web-aplikaciju.</p><a class="download" id="android-download" href="./downloads/shotgun-keyboard.apk" download>Preuzmi Android APK <span>↓</span></a><details><summary>Kako instalirati</summary><ol><li>Android: instaliraj APK i otvori Shotgun Keyboard.</li><li>U postavkama uključi tipkovnicu i odaberi je kao aktivnu.</li><li>iPhone: Safari → Dijeli → Dodaj na početni zaslon. U aplikaciji uključi zvuk i dodirni polje za tekst.</li></ol><p>Web zvuk radi dok je ova stranica otvorena. Android koristi jednostavan QWERTY raspored, bez predikcije i swipe pisanja. Promjenu tipkovnice koristi za povratak na svoju.</p></details></article>
+      </div>
+    </section>
+    <section class="privacy-note"><span aria-hidden="true">◎</span><div><strong>Samo zvuk. Tvoje riječi ostaju tvoje.</strong><p>Nema računa, analitike ni snimanja tipkanja. Postavke ostaju na uređaju. Za jedan prasak koristi jednu uključenu verziju aplikacije.</p></div></section>
+  </main>
+  <footer><a class="brand" href="./">⊕ SHOTGUN KEYBOARD</a><span>MADE TO MAKE SOME NOISE.</span><a href="https://github.com/janabrestoveckimcc-crypto/shotgun" target="_blank" rel="noopener">Source code ↗</a></footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

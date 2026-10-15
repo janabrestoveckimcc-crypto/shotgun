@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Shotgun Keyboard",
+  "version": "1.0.0",
+  "description": "Jedna tipka, jedan shotgun pucanj. Lokalni zvuk, bez snimanja teksta.",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "offscreen"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "Shotgun Keyboard" },
+  "icons": { "16": "assets/icons/icon-16.png", "48": "assets/icons/icon-48.png", "128": "assets/icons/icon-128.png" },
+  "content_scripts": [{ "matches": ["http://*/*", "https://*/*"], "js": ["content.js"], "all_frames": true, "match_about_blank": true, "run_at": "document_start" }]
+}

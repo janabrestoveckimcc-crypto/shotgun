@@ -1,0 +1,17 @@
+import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { generateAssets, root } from './generate-assets.mjs';
+await generateAssets();
+await rm(resolve(root, 'dist'), { recursive: true, force: true });
+await mkdir(resolve(root, 'dist/downloads'), { recursive: true });
+await cp(resolve(root, 'web'), resolve(root, 'dist'), { recursive: true });
+await cp(resolve(root, 'shared'), resolve(root, 'dist/shared'), { recursive: true });
+await cp(resolve(root, 'assets'), resolve(root, 'dist/assets'), { recursive: true });
+await mkdir(resolve(root, 'release/extension'), { recursive: true });
+await cp(resolve(root, 'extension'), resolve(root, 'release/extension'), { recursive: true });
+await cp(resolve(root, 'shared'), resolve(root, 'release/extension/shared'), { recursive: true });
+await cp(resolve(root, 'assets'), resolve(root, 'release/extension/assets'), { recursive: true });
+await mkdir(resolve(root, 'android/app/src/main/res/raw'), { recursive: true });
+for (const sound of ['pump', 'double', 'tactical']) await cp(resolve(root, `assets/audio/${sound}.wav`), resolve(root, `android/app/src/main/res/raw/${sound}.wav`));
+await writeFile(resolve(root, 'dist/.nojekyll'), '');
+console.log('Built web/PWA, extension, and Android audio assets.');
